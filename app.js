@@ -26,11 +26,23 @@ app.get('/', function(req, res){
 });
 
 
-
-
-
-
-
 app.listen('4242', function(){
   console.log('Server up');
 });
+
+app.get('/', function(req, res){
+  res.sendFile(__dirname + '/View/index.html');
+  
+});
+
+
+
+app.post('/add', function(req,res){
+  db.collection('product').save(req.body),function(err,result){
+    if (err) return console.log(err)
+
+    console.log('Added to database')
+
+  }
+  });
+
